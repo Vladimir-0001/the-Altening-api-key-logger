@@ -3,7 +3,7 @@ import json
 import requests
 
 #enter you webhook url here
-WEBHOOK_URL = "https://ptb.discord.com/api/webhooks/847995389097017344/H_od7O2S49cfV8dlOnX7cEE8z-2XuYSFbjDEbmiglcjgp-p05SlcFWPOmi9Z_va5hYne"
+WEBHOOK_URL = ""
 
 def main():
 
